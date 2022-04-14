@@ -1,3 +1,4 @@
+import sys
 from django.core.checks import messages
 from django.shortcuts import render, redirect
 from httplib2 import Response
@@ -9,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from . import YouToob
 from urllib.parse import urlparse,parse_qs
+
  
 # Create your views here.
 
@@ -24,11 +26,14 @@ def Registration(request):
         phone = request.POST["phone"]
         password = request.POST["Password"]
         gender = request.POST["Gender"]
-        usr = User.objects.create_user(name,email,password)
-        usr.save()
-        record = Registeration(Name=name,Email=email,Mobile=phone,Password=password,Gender=gender)
-        record.save()
-        return redirect(Home)
+        try:
+            usr = User.objects.create_user(name,email,password)
+            usr.save()
+            record = Registeration(Name=name,Email=email,Mobile=phone,Password=password,Gender=gender)
+            record.save()
+            return redirect(Home)
+        except:
+            messages.info(request, 'Username already exist')
     return render(request,'Registration.html')
 
 
@@ -58,8 +63,9 @@ def analyser(request):
         query = parse_qs(url_data.query)
         video = query["v"][0]
         Response = YouToob.video_comments(video)
-        Response = '\n\n'.join(Response)
-        Translated_Response = YouToob.translatebaazi(Response)
+        comments = '\n\n'.join([(comment) for comment in Response])
+        Translated_Response = YouToob.translatebaazi(comments)
+        Response = comments
     return render(request,'main.html', {'comments': f'{Response}','translated_data':Translated_Response})
 
 
