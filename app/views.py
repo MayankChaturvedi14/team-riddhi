@@ -38,20 +38,20 @@ def Registration(request):
 
 
 def Login(request):
-    if request.method=="POST":
-        loginname = request.POST["name"]  
-        loginemail = request.POST['email']
-        loginpassword = request.POST["Password"]  
-        user = authenticate(username=loginname, email=loginemail, password=loginpassword)
-        if user is not None:
-            login(request,user)
-            if request.GET.get('next', None):
-                return redirect(request.GET['next']) 
+    if not request.user.is_authenticated:
+        if request.method=="POST":
+            loginname = request.POST["name"]  
+            loginemail = request.POST['email']
+            loginpassword = request.POST["Password"]  
+            user = authenticate(username=loginname, email=loginemail, password=loginpassword)
+            if user is not None:
+                login(request,user)
+                if request.GET.get('next', None):
+                    return redirect(request.GET['next']) 
             return redirect(analyser)
-            
-        else:
-            return redirect(Home)         
-    return render(request,'login.html')
+        return render(request,'login.html')
+    return redirect(analyser)        
+    
 
 @login_required(login_url='/login/')
 def analyser(request):
