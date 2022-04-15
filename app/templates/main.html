@@ -87,6 +87,25 @@
     .star {
       color: red;
     }
+    a.button4 {
+      display: inline-block;
+      padding: 0.3em 1.2em;
+      margin: 0 0.1em 0.1em 0;
+      border: 3px solid rgb(17, 130, 236);
+      
+      box-sizing: border-box;
+      text-decoration: none;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      
+      text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+      text-align: center;
+      transition: all 0.2s;
+  }
+
+  a.button4:hover {
+      border-color: rgb(4, 250, 37);
+  }
   </style>
 </head>
 
@@ -135,14 +154,14 @@
             </div>
             <div class="row" style="margin: 2rem auto;">
               <div class="col-md-4">
-                <a onclick="AnalyserHide()"  type="submit" style="display: block; background :none; color :white "> Analysis</a>
+                <a onclick="AnalyserHide()" class="button4"  type="submit" style="display: block; background :none; color :white "> Analysis</a>
               </div>
               <div class="col-md-4">
-                 <a onclick="myFunction()" name="Trans" id="translator" type="submit"
+                 <a onclick="myFunction()" class="button4" name="Trans" id="translator" type="submit"
                  style="display: block; background :none ; color :white">  Translation</a>
               </div>
               <div class="col-md-4">
-                <a onclick="Both()" type="submit" name="Analyse" id="Analyse" style="display: block; background :none ; color :white ">Both  </a>
+                <a onclick="Both()"  class="button4" type="submit" name="Analyse" id="Analyse" style="display: block; background :none ; color :white ">Both  </a>
               </div>
               
               
