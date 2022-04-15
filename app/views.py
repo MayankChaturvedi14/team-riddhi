@@ -57,6 +57,8 @@ def Login(request):
 def analyser(request):
     Response = "This is comment"
     Translated_Response = "This is translated comment"
+    originals = []
+    Analysed_Response = []
     if request.method=="POST":
         vid_url = request.POST["url"]
         url_data = urlparse(vid_url)
@@ -65,8 +67,17 @@ def analyser(request):
         Response = YouToob.video_comments(video)
         comments = '\n\n'.join([(comment) for comment in Response])
         Translated_Response = YouToob.translatebaazi(comments)
+        for i in Response:
+            bad_word = YouToob.sentiment_scores(i)
+            if(bad_word.lower()=="negative"):
+                originals.append(i)
+                Analysed_Response.append(YouToob.translatebaazi(str(i)))
+            else:
+                pass
+        originals = '\n\n'.join([(comment) for comment in originals])
+        Analysed_Response = '\n\n'.join([(comment) for comment in Analysed_Response])
         Response = comments
-    return render(request,'main.html', {'comments': f'{Response}','translated_data':Translated_Response})
+    return render(request,'main.html', {'comments': f'{Response}','translated_data':Translated_Response,'analysed_data':Analysed_Response,'originals':originals})
 
 
 

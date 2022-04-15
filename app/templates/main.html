@@ -135,14 +135,14 @@
             </div>
             <div class="row" style="margin: 2rem auto;">
               <div class="col-md-4">
-                <button style="display: block; background :none; color :white "> Analysis</button>
+                <a onclick="AnalyserHide()"  type="submit" style="display: block; background :none; color :white "> Analysis</a>
               </div>
               <div class="col-md-4">
                  <a onclick="myFunction()" name="Trans" id="translator" type="submit"
                  style="display: block; background :none ; color :white">  Translation</a>
               </div>
               <div class="col-md-4">
-                <button style="display: block; background :none ; color :white ">Both  </button>
+                <a onclick="Both()" type="submit" name="Analyse" id="Analyse" style="display: block; background :none ; color :white ">Both  </a>
               </div>
               
               
@@ -155,7 +155,12 @@
             <div class="form-floating" style="margin: 2rem auto;">
                 <textarea id="hide" class="form-control" placeholder="Changed comments are here" id="floatingTextarea2" style="Width : 290px; height: 180px ; margin-right:10px; background : none; color : white">{% for i in translated_data %}{{i}}{% endfor %}</textarea>
             </div>
-
+            <div class="form-floating" style="margin: 2rem auto;">
+              <textarea id="lol" class="form-control" placeholder="Changed comments are here" id="floatingTextarea2" style="display:none; Width : 290px; height: 180px ; margin-right:10px; background : none; color : white">{% for i in analysed_data %}{{i}}{% endfor %}</textarea>
+          </div>
+          <div class="form-floating" style="margin: 2rem auto;">
+            <textarea id="xd" class="form-control" placeholder="Changed comments are here" id="floatingTextarea2" style="display:none; Width : 290px; height: 180px ; margin-right:10px; background : none; color : white">{% for i in originals %}{{i}}{% endfor %}</textarea>
+        </div>
 
           </form>
 
@@ -198,9 +203,29 @@
     crossorigin="anonymous"></script>
 
     <script>
+      function AnalyserHide() {
+        var z = document.getElementById("hide");
+        var x = document.getElementById("lol");
+        var y = document.getElementById("xd");
+        z.style.display = "none";
+        x.style.display = "none";
+        y.style.display = "block";
+      }
       function myFunction() {
         var x = document.getElementById("hide");
+        var z = document.getElementById("lol");
+        var y = document.getElementById("xd");
         x.style.display = "block";
+        z.style.display = "none";
+        y.style.display = "none";
+      }
+      function Both() {
+        var z = document.getElementById("hide");
+        var x = document.getElementById("lol");
+        var y = document.getElementById("xd");
+        z.style.display = "none";
+        x.style.display = "block";
+        y.style.display = "none";
          
       }
       </script>
