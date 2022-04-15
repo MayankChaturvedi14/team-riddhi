@@ -73,7 +73,7 @@ def analyser(request):
                 originals.append(i)
                 Analysed_Response.append(YouToob.translatebaazi(str(i)))
             else:
-                pass
+                Analysed_Response.append(i)
         originals = '\n\n'.join([(comment) for comment in originals])
         Analysed_Response = '\n\n'.join([(comment) for comment in Analysed_Response])
         Response = comments
