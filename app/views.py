@@ -31,7 +31,7 @@ def Registration(request):
             usr.save()
             record = Registeration(Name=name,Email=email,Mobile=phone,Password=password,Gender=gender)
             record.save()
-            return redirect(Home)
+            return redirect(Login)
         except:
             messages.info(request, 'Username already exist')
     return render(request,'Registration.html')
@@ -104,3 +104,5 @@ def signout(request):
 
 def FAQ(request):
     return render(request,'FAQ.html')
+def About(request):
+    return render(request,'about.html')

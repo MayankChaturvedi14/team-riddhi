@@ -113,20 +113,26 @@
   {% csrf_token %}
   <nav class="navbar navbar-expand-lg navbar-light top">
     <div class="container">
-      <a class="navbar-brand" href="/home">SENTIMENT ANALYSER</a> <button aria-controls="navbarSupportedContent"
+      <a class="navbar-brand" href="/home">Senalyser</a> <button aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
         data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span
           class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link navbar-light" href="/home">Home</a>
-          </li>
-          <li class="nav-item">
+						<a class="nav-link navbar-light" href="{% url 'Home' %}">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'Login' %}">Login</a>
+					</li>
+					<li class="nav-item">
 						<a class="nav-link" href="{% url 'Register' %}">Register</a>
 					</li>
-          <li class="nav-item">
+					<li class="nav-item">
 						<a class="nav-link" href="{% url 'faq' %}">FAQ</a>
+					</li>
+          <li class="nav-item">
+						<a class="nav-link" href="{% url 'About' %}">About</a>
 					</li>
           <li>
             <a href="{% url 'sins' %}" class="btn btn-outline-danger" >Sign out</a>
@@ -161,24 +167,24 @@
                  style="display: block; background :none ; color :white">  Translation</a>
               </div>
               <div class="col-md-4">
-                <a onclick="Both()"  class="button4" type="submit" name="Analyse" id="Analyse" style="display: block; background :none ; color :white ">Both  </a>
+                <a onclick="Both()"  class="button4" type="submit" name="Analyse" id="Analyse" style="display: block; background :none ; color :white ">Senalyse</a>
               </div>
               
               
             </div>
             <div class="form-floating" style="margin: 2rem auto;">
-              <textarea class="form-control" placeholder="Fetched comments are here" id="floatingTextarea2" style="Width : 290px; height: 180px ; margin-right:10px; background : none; color : white">{% for i in comments %}{{i}}{% endfor %}</textarea>
+              <textarea class="form-control" placeholder="Fetched comments are here" id="floatingTextarea2" style=" height: 180px ; margin-right:10px; background : none; color : white">{% for i in comments %}{{i}}{% endfor %}</textarea>
               
             </div>
 
             <div class="form-floating" style="margin: 2rem auto;">
-                <textarea id="hide" class="form-control" placeholder="Changed comments are here" id="floatingTextarea2" style="Width : 290px; height: 180px ; margin-right:10px; background : none; color : white">{% for i in translated_data %}{{i}}{% endfor %}</textarea>
+                <textarea id="hide" class="form-control" placeholder="Changed comments are here" id="floatingTextarea2" style="height: 180px ; margin-right:10px; background : none; color : white">{% for i in translated_data %}{{i}}{% endfor %}</textarea>
             </div>
             <div class="form-floating" style="margin: 2rem auto;">
-              <textarea id="lol" class="form-control" placeholder="Changed comments are here" id="floatingTextarea2" style="display:none; Width : 290px; height: 180px ; margin-right:10px; background : none; color : white">{% for i in analysed_data %}{{i}}{% endfor %}</textarea>
+              <textarea id="lol" class="form-control" placeholder="Changed comments are here" id="floatingTextarea2" style="display:none; height: 180px ; margin-right:10px; background : none; color : white">{% for i in analysed_data %}{{i}}{% endfor %}</textarea>
           </div>
           <div class="form-floating" style="margin: 2rem auto;">
-            <textarea id="xd" class="form-control" placeholder="Changed comments are here" id="floatingTextarea2" style="display:none; Width : 290px; height: 180px ; margin-right:10px; background : none; color : white">{% for i in originals %}{{i}}{% endfor %}</textarea>
+            <textarea id="xd" class="form-control" placeholder="Changed comments are here" id="floatingTextarea2" style="display:none; height: 180px ; margin-right:10px; background : none; color : white">{% for i in originals %}{{i}}{% endfor %}</textarea>
         </div>
 
           </form>

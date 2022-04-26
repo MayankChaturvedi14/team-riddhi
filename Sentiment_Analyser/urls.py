@@ -10,5 +10,6 @@ urlpatterns = [
     path('register/', views.Registration,name="Register"),
     path('analyser/', views.analyser,name="main"),
     path('faq/', views.FAQ,name="faq"),
+     path('About/', views.About,name="About"),
     path('signout/', views.signout,name="sins"),
 ]
